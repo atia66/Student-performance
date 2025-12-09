@@ -1,7 +1,8 @@
 import test
 from modeling import Modeling, show_reports_plot, accuracy_comparison_plot
 
-from EDA import plotting_features_relation, features_distribution, features_boxplots
+from EDA import plotting_features_relation, features_boxplots
+
 from data_processing import features_valuecounts, features_distribution, encode_categorical_features, imbalance_checking, handle_imbalance ,balance_all_classes_resample
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -15,6 +16,7 @@ df = pd.read_csv('./Balanced_Student_performance.csv')
 ## first data processing
 
 def Data_Processing(df):
+    
     features_valuecounts(df)
 
     features_distribution(df)
@@ -22,15 +24,13 @@ def Data_Processing(df):
     encode_categorical_features(df)
 
     imbalance_checking(df)
-    # df_balanced=handle_imbalance(df)
-    # imbalance_checking(df_balanced)
-    df_balanced2=balance_all_classes_resample(df)
-    imbalance_checking(df_balanced2)
-    return df_balanced2
-# Explore data and explain it
+    df_balanced=handle_imbalance(df)
+    imbalance_checking(df_balanced)
+    # df_balanced2=balance_all_classes_resample(df)
+    # imbalance_checking(df_balanced2)
+    return df_balanced
 def EDA(df):
     plotting_features_relation(df)
-    features_distribution(df)
     features_boxplots(df)
 
 def testing(df):
